@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Grammar Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ AI Grammar Checker</h1>
+            <p class="subtitle">Write with confidence. Improve your grammar, refine your ideas, and communicate clearly with the help of AI.</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section glass-panel">
+                <h2>📝 Text Editor</h2>
+                <textarea id="input-text" placeholder="Type or paste your text here..." spellcheck="false"></textarea>
+                
+                <div class="controls-wrapper">
+                    <div class="stats">
+                        <span id="word-count">0 words</span>
+                        <span id="char-count">0 characters</span>
+                    </div>
+
+                    <div class="button-group-wrapper">
+                        <div class="button-group">
+                            <button id="clear-btn" onclick="clearText()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                Clear
+                            </button>
+                            <button id="check-btn" onclick="checkGrammar()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Check Grammar
+                            </button>
+                        </div>
+                        <span class="shortcut-hint">Press Ctrl + Enter</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <h2>Analyzing your text...</h2>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem; font-weight: 500;">Checking for grammar, spelling, and style.</p>
+                </div>
+                
+                <div id="results" class="hidden">
+                    <div class="result-card corrected-text">
+                        <h2>✏️ Corrected Version</h2>
+                        <div id="corrected-content"></div>
+                    </div>
+                    
+                    <div class="result-card errors-list">
+                        <h2>🔍 Errors Found</h2>
+                        <div id="errors-content"></div>
+                    </div>
+                    
+                    <div class="result-card summary">
+                        <h2>📊 Summary</h2>
+                        <p id="summary-content"></p>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-message hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
